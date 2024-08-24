@@ -16,12 +16,16 @@ class ParticipantController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+
         if ($search) {
-            $participants = Participant::where('name', 'like', '%' . $search . "%")->paginate(6);
-            return view('pages.participant.index', compact('participants'));
+            $participants = Participant::where('name', 'like', '%' . $search . "%")
+                ->orderBy('name', 'asc') // Tambahkan ini untuk mengurutkan berdasarkan nama
+                ->paginate(6);
+        } else {
+            $participants = Participant::orderBy('name', 'asc') // Tambahkan ini untuk mengurutkan berdasarkan nama
+                ->paginate(6);
         }
 
-        $participants = Participant::paginate(6);
         return view('pages.participant.index', compact('participants'));
     }
 
