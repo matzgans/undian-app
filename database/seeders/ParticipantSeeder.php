@@ -13,7 +13,7 @@ class ParticipantSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i < 21000; $i++) {
+        for ($i = 1; $i < 100; $i++) {
             Participant::create([
                 "name" => fake()->name(),
                 'ktp_id' => fake()->unique()->numberBetween(1000000000000000, 9999999999999999),

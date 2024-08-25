@@ -21,6 +21,7 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
+
         <!-- Page Heading -->
         @isset($header)
             <header class="bg-white shadow">
@@ -34,6 +35,7 @@
         <main>
             {{ $slot }}
         </main>
+        @include('layouts.footer')
     </div>
     @stack('before-scripts')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
