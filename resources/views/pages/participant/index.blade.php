@@ -29,14 +29,14 @@
                         </form>
                     </div>
 
-                    <a class="dark:focus:ring-[#3b5998]/55 text-nowrap mb-2 me-2 inline-flex items-center rounded-lg bg-green-600 px-5 py-3.5 text-center text-sm font-medium text-white hover:bg-orange-400 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50"
+                    {{-- <a class="dark:focus:ring-[#3b5998]/55 text-nowrap mb-2 me-2 inline-flex items-center rounded-lg bg-green-600 px-5 py-3.5 text-center text-sm font-medium text-white hover:bg-orange-400 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50"
                         href="">
                         <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
                         Tambah Data Participant
-                    </a>
+                    </a> --}}
                     <a class="dark:focus:ring-[#3b5998]/55 text-nowrap mb-2 me-2 inline-flex items-center rounded-lg bg-orange-500 px-5 py-3.5 text-center text-sm font-medium text-white hover:bg-orange-400 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50"
                         href="{{ route('export.participant') }}">
                         <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -71,6 +71,9 @@
                                         Alamat
                                     </th>
                                     <th class="px-6 py-3" scope="col">
+                                        Foto Ktp
+                                    </th>
+                                    <th class="px-6 py-3" scope="col">
                                         Action
                                     </th>
                                 </tr>
@@ -97,6 +100,27 @@
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ $participant->address }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <!-- Tombol Lihat KTP -->
+                                            {{-- <button class="rounded bg-blue-500 px-4 py-2 text-white"
+                                                data-image="{{ asset($participant->ktp_image) }}"
+                                                onclick="openModal(this)">
+                                                Lihat KTP
+                                            </button> --}}
+                                            <a class="dark:focus:ring-[#3b5998]/55 text-nowrap mb-2 me-2 inline-flex items-center rounded-lg bg-orange-500 px-5 py-2 text-center text-sm font-medium text-white hover:bg-orange-400 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50"
+                                                data-image="{{ asset($participant->ktp_image) }}"
+                                                onclick="openModal(this)">
+                                                <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                                </svg>
+
+                                            </a>
+
                                         </td>
                                         <td class="flex px-6 py-4">
                                             <a
@@ -132,12 +156,43 @@
                         </div>
                     </div>
 
+
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="fixed inset-0 flex hidden items-center justify-center bg-black bg-opacity-50" id="ktpModal">
+            <div class="w-full max-w-lg rounded-lg bg-white p-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-semibold">Gambar KTP</h2>
+                    <button class="text-black" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="mt-4">
+                    <!-- Tampilan Gambar KTP -->
+                    <img class="h-full w-full" id="ktpImage" src="" alt="Gambar KTP">
+                </div>
+            </div>
+        </div>
+
     </div>
     @push('after-scripts')
         <script>
+            function openModal(button) {
+                // Ambil URL gambar dari data-attribute
+                var imageUrl = button.getAttribute('data-image');
+
+                // Setel gambar pada modal
+                document.getElementById('ktpImage').src = imageUrl;
+
+                // Tampilkan modal
+                document.getElementById('ktpModal').classList.remove('hidden');
+            }
+
+            function closeModal() {
+                // Sembunyikan modal
+                document.getElementById('ktpModal').classList.add('hidden');
+            }
+
             @if (session('success'))
                 Swal.fire({
                     icon: 'success',

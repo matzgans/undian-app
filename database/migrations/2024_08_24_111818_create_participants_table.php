@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->text("address");
             $table->string("ktp_image");
-            $table->string("ticket_number");
+            $table->string("ticket_number")->unique();
             $table->string("phone");
             $table->timestamps();
         });
