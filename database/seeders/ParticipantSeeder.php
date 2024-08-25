@@ -20,7 +20,7 @@ class ParticipantSeeder extends Seeder
                 'address' => fake()->address(),
                 "ticket_number" => 'DIARY' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT),
                 'phone' => fake()->phoneNumber(),
-                "ktp_image" => "image.jpg",
+                "ktp_image" => "assets/image.png",
             ]);
         }
     }

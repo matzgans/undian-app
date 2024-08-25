@@ -22,10 +22,10 @@ class ParticipantController extends Controller
         if ($search) {
             $participants = Participant::where('name', 'like', '%' . $search . "%")
                 ->orderBy('name', 'asc') // Tambahkan ini untuk mengurutkan berdasarkan nama
-                ->paginate(6);
+                ->paginate(4);
         } else {
             $participants = Participant::orderBy('name', 'asc') // Tambahkan ini untuk mengurutkan berdasarkan nama
-                ->paginate(6);
+                ->paginate(4);
         }
 
         return view('pages.participant.index', compact('participants'));
@@ -107,7 +107,44 @@ class ParticipantController extends Controller
      */
     public function update(Request $request, Participant $participant)
     {
-        //
+        DB::beginTransaction();
+        try {
+            // Validasi input
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                // 'ktp_id' => 'required|digits:16|unique:participants,ktp_id,' . $participant->id,  // Memperbolehkan nilai yang sama untuk peserta yang sama
+                'address' => 'required|string|max:255',
+                'phone' => 'required|string|max:15',
+                'ktp_image' => 'nullable|mimes:jpg,jpeg,png|max:2048',  // Gambar bersifat opsional saat update
+            ]);
+
+            // Proses upload gambar
+            if ($request->hasFile('ktp_image')) {
+                // Hapus gambar lama jika ada
+                if ($participant->ktp_image && file_exists(public_path($participant->ktp_image))) {
+                    unlink(public_path($participant->ktp_image));
+                }
+
+                // Upload gambar baru
+                $file = $request->file('ktp_image');
+                $fileName = time() . '.' . $file->getClientOriginalExtension();  // Buat nama file unik
+                $file->move(public_path('assets'), $fileName);  // Pindahkan file ke public/assets
+                $validatedData['ktp_image'] = 'assets/' . $fileName;  // Simpan path file ke database
+            } else {
+                // Jika tidak ada gambar baru, pertahankan gambar lama
+                $validatedData['ktp_image'] = $participant->ktp_image;
+            }
+
+            // Update data peserta di database
+            $participant->update($validatedData);
+
+            DB::commit();
+            return redirect()->back()->with('success', 'Data Participant Berhasil Diupdate');
+        } catch (\Throwable $e) {
+            // Rollback transaksi jika terjadi kesalahan
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
+        }
     }
     public function exportExcel()
     {
@@ -120,11 +157,20 @@ class ParticipantController extends Controller
     public function destroy(Participant $participant)
     {
         DB::beginTransaction();
+
         try {
+            // Path ke file gambar yang ingin dihapus
+            $imagePath = public_path($participant->ktp_image);
+
+            // Cek jika file ada, kemudian hapus file tersebut
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+            // Hapus data participant dari database
             $participant->delete();
 
             DB::commit();
-            return redirect()->back()->with('success', 'Data Participant Berhasil Di hapus');
+            return redirect()->back()->with('success', 'Data Participant Berhasil Dihapus');
         } catch (\Throwable $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
