@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -85,8 +85,6 @@
         <h1
             class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl text-amber-950 ">
             Kupon Undian Diary Fest Baubau Berjaya Bersama Ari Yasin</h1>
-
-
     </div>
 
 
@@ -180,4 +178,108 @@
     @stack('after-scripts')
 </body>
 
-</html>
+</html> --}}
+
+
+<x-landing-layout>
+    <div id="controls-carousel" class="relative w-full p-5" data-carousel="static">
+        <!-- Carousel wrapper -->
+        <div class="relative h-screen overflow-hidden rounded-lg md:h-96">
+            <!-- Item 1 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="{{ asset('images/landing-page/3c8c0a16-c715-4958-8749-19329c222cbe.jpeg') }}"
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+            <!-- Item 2 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                <img src="{{ asset('images/landing-page/8a1c4f30-e3e1-4de1-a47e-25de8235c412.jpeg') }}"
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+            <!-- Item 3 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="{{ asset('images/landing-page/a7469b2c-1f81-4e1b-956f-fdd07680a11e.jpeg') }}"
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+        </div>
+        <!-- Slider controls -->
+        <button type="button"
+            class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+            data-carousel-prev>
+            <span
+                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-h/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 1 1 5l4 4" />
+                </svg>
+                <span class="sr-only">Previous</span>
+            </span>
+        </button>
+        <button type="button"
+            class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+            data-carousel-next>
+            <span
+                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 9 4-4-4-4" />
+                </svg>
+                <span class="sr-only">Next</span>
+            </span>
+        </button>
+    </div>
+
+    <div class="container p-4 mb-4 mt-5 text-center">
+        <h1
+            class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl text-amber-950 ">
+            Kupon Undian Diary Fest Baubau Berjaya Bersama Ari Yasin</h1>
+    </div>
+
+    <form class="max-w-sm mx-auto p-5">
+        <div class="mb-5">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                Nama Lengkap :
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="username" type="text" placeholder="Username">
+        </div>
+        <div class="mb-5">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                Nomor KTP :
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="username" type="text" placeholder="7571xxxxx">
+        </div>
+        <div class="mb-5">
+            <label for="address" class="block mb-2 text-sm font-medium text-black-100 dark:text-black">
+                Alamat : </label>
+            <input type="address" id="address"
+                class="bg-whiteborder border-white text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-white dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="name@flowbite.com" required />
+        </div>
+        <div class="mb-5">
+            <label for="phone" class="block mb-2 text-sm font-medium text-black-100 dark:text-black">
+                No Hp : </label>
+            <input type="phone" id="phone"
+                class="bg-whiteborder border-white text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-white dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="name@flowbite.com" required />
+        </div>
+        <label class="block mb-2 text-sm font-medium text-black " for="default_size">Upload
+            Ktp</label>
+        <input
+            class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+            id="default_size" type="file">
+
+        <div class="flex items-start mb-5">
+            <div class="flex items-center h-5">
+
+            </div>
+        </div>
+
+        <button type="submit"
+            class="text-white bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">Submit</button>
+    </form>
+</x-landing-layout>
