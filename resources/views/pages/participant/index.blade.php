@@ -46,7 +46,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="w-full">
+                <div class="w-ful">
                     <div class="relative overflow-x-auto px-6 pb-3 shadow-md sm:rounded-lg">
                         <table class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
                             <thead
