@@ -19,8 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/export-excel', [ParticipantController::class, 'exportExcel'])->name('export.participant');
 });
 Route::middleware('auth')->prefix('admin')->group(function () {
-    Route::resource('/participant', ParticipantController::class);
+    Route::resource('/participant', ParticipantController::class)->except("store");
 });
+Route::post('/participant/store', [ParticipantController::class, 'store'])->name('participant.store');
 
 
 
