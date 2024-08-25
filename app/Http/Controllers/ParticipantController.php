@@ -52,7 +52,7 @@ class ParticipantController extends Controller
                 'ktp_id' => 'required|digits:16|unique:participants',  // Pastikan 'participants' adalah nama tabel yang benar
                 'address' => 'required|string|max:255',
                 'phone' => 'required|string|max:15',
-                'ktp_image' => 'required|mimes:jpg,jpeg|max:2048',  // Maksimal 2MB, sesuaikan jika perlu
+                'ktp_image' => 'required|mimes:jpg,jpeg,png|max:500',  // Maksimal 2MB, sesuaikan jika perlu
             ]);
 
             // Proses upload gambar
@@ -74,7 +74,9 @@ class ParticipantController extends Controller
             Participant::create(array_merge($validatedData, ['ticket_number' => $ticket_number]));
 
             DB::commit();
-            return redirect()->back()->with('success', 'Data Participant Berhasil Disimpan')->with('ticket_number', $ticket_number);
+            // return redirect()->back()->with('success', 'Data Participant Berhasil Disimpan')->with('ticket_number', $ticket_number);
+
+            return redirect()->route('tickets.index')->with('success', 'Data Participant Berhasil Disimpan')->with('ticket_number', $ticket_number);
         } catch (\Throwable $e) {
             // Rollback transaksi jika terjadi kesalahan
             DB::rollback();
