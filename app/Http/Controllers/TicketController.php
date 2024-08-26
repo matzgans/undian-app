@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Participant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
@@ -17,5 +19,27 @@ class TicketController extends Controller
 
         $ticket_number = session('ticket_number');
         return view('tickets', compact('ticket_number'));
+    }
+
+
+    public function show(Request $request)
+    {
+        $ticket =  $request->input("check_tickets");
+        if ($ticket) {
+            DB::beginTransaction();
+            try {
+                $validateData = $request->validate([
+                    'check_tickets' => 'required|digits:16',
+                ]);
+                $participant = Participant::where('ktp_id', $validateData['check_tickets'])->first();
+                DB::commit();
+            } catch (\Throwable $e) {
+                DB::rollBack();
+                return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
+            }
+        } else {
+            $participant = null;
+        }
+        return view("showTickets", compact('participant'));
     }
 }

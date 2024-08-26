@@ -10,6 +10,7 @@ Route::get('/', function () {
 })->name("layouts.index");
 
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
+Route::get('/tickets/show', [TicketController::class, 'show'])->name('tickets.show');
 
 
 
