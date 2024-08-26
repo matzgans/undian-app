@@ -18,7 +18,7 @@ class TicketController extends Controller
 
 
         $ticket_number = session('ticket_number');
-        return view('tickets', compact('ticket_number'));
+        return view('pages.landing.tickets', compact('ticket_number'));
     }
 
 
@@ -40,6 +40,6 @@ class TicketController extends Controller
         } else {
             $participant = null;
         }
-        return view("showTickets", compact('participant'));
+        return view("pages.landing.showTickets", compact('participant'));
     }
 }
