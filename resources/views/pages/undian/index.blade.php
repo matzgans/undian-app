@@ -5,6 +5,12 @@
                 <div class="px-6 pt-6 text-xl font-bold text-gray-500 pb-6">
                     {{ __('Undian') }}
                 </div>
+                <button
+                    class="rounded-lg bg-green-700 px-5 ml-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+                    type="submit"><a href="/">Tambah Data Hadiah</a></button>
+                <button
+                    class="rounded-lg bg-green-700 px-5 ml-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+                    type="submit"><a href="/">Lihat Data Pemenang</a></button>
                 <div class="w-ful">
                     <button
                         class="rounded-lg bg-green-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto ml-5"
