@@ -66,4 +66,30 @@ class UndianController extends Controller
             return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
+    public function show(Request $request)
+    {
+        $search = $request->input('search');
+        $query = Undian::join('participants', 'undians.participant_id', '=', 'participants.id')
+            ->join('prizes', 'undians.prize_id', '=', 'prizes.id')
+            ->select(
+                'undians.participant_id',
+                'participants.ktp_id',
+                'participants.name',
+                'participants.address',
+                'participants.ktp_image',
+                'participants.ticket_number',
+                'participants.phone',
+                'prizes.name as prize_name'
+            );
+
+        if ($search) {
+            $query->where('participants.name', 'like', '%' . $search . '%')
+                ->orderBy('participants.name', 'asc'); // Order by participant name
+        } else {
+            $query->orderBy('participants.name', 'asc'); // Order by participant name
+        }
+        $winners = $query->paginate(4);
+        return view('pages.undian.winner', compact('winners'));
+    }
 }

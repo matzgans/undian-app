@@ -28,10 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/export-excel', [ParticipantController::class, 'exportExcel'])->name('export.participant');
+    Route::get('admin/undian/winners', [UndianController::class, 'show'])->name('undian.show');
 });
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('/participant', ParticipantController::class)->except("store");
-    Route::resource('/undian', UndianController::class)->except("create");
+    Route::resource('/undian', UndianController::class)->except("show");
 });
 Route::post('/participant/store', [ParticipantController::class, 'store'])
     ->middleware('throttle:5,1')

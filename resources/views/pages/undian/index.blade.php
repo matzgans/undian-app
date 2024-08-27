@@ -10,7 +10,7 @@
                     type="submit"><a href="/">Tambah Data Hadiah</a></button>
                 <button
                     class="rounded-lg bg-green-700 px-5 ml-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
-                    type="submit"><a href="/">Lihat Data Pemenang</a></button>
+                    type="submit"><a href="{{ route('undian.show') }}">Lihat Data Pemenang</a></button>
                 <div class="w-ful">
                     <form class="mx-auto max-w-full p-5" action="{{ route('undian.store') }}" method="post">
                         @csrf
