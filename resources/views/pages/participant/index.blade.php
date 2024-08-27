@@ -19,7 +19,7 @@
                                     </svg>
                                 </div>
                                 <input
-                                    class="focus:border-greenbg-green-600 focus:ring-greenbg-green-600 dark:focus:border-greenbg-green-600 dark:focus:ring-greenbg-green-600 block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                                    class="focus:border-greenbg-green-600 focus:ring-greenbg-green-600 dark:focus:border-greenbg-green-600 dark:focus:ring-greenbg-green-600 block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 dark:border-gray-600 dark:bg-white dark:text-black dark:placeholder-gray-400"
                                     id="default-search" name="search" type="search" value="{{ request('search') }}"
                                     placeholder="Masukan Nama" />
                                 <button
@@ -49,8 +49,7 @@
                 <div class="w-ful">
                     <div class="relative overflow-x-auto px-6 pb-3 shadow-md sm:rounded-lg">
                         <table class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
-                            <thead
-                                class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                            <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-white dark:text-black">
                                 <tr>
                                     <th class="px-6 py-3" scope="col">
                                         No
@@ -81,8 +80,8 @@
                             <tbody>
                                 @foreach ($participants as $participant)
                                     <tr
-                                        class="border-b odd:bg-white even:bg-gray-50 dark:border-gray-700 odd:dark:bg-gray-900 even:dark:bg-gray-800">
-                                        <th class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                                        class="border-b odd:bg-white even:bg-gray-50 dark:border-gray-700 dark:text-black odd:dark:bg-white odd:dark:text-black even:dark:bg-white">
+                                        <th class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-black"
                                             scope="row">
                                             {{ ($participants->currentPage() - 1) * $participants->perPage() + $loop->iteration }}
                                         </th>
@@ -151,7 +150,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="mt-3">
+                        <div class="mt-3 dark:text-white">
                             {{ $participants->links() }}
                         </div>
                     </div>
@@ -162,7 +161,7 @@
         </div>
         <!-- Modal -->
         <div class="fixed inset-0 flex hidden items-center justify-center bg-black bg-opacity-50" id="ktpModal">
-            <div class="w-full max-w-lg rounded-lg bg-white p-4">
+            <div class="w-full max-w-sm rounded-lg bg-white p-4">
                 <div class="flex items-center justify-between">
                     <h2 class="text-xl font-semibold">Gambar KTP</h2>
                     <button class="text-black" onclick="closeModal()">&times;</button>

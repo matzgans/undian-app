@@ -13,40 +13,40 @@
                         @method('PUT')
                         <div class="grid grid-cols-2 gap-4">
                             <div class="mb-2">
-                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-black"
                                     for="ktp_id">Ktp ID</label>
                                 <input
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-white dark:text-black dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                                     id="ktp_id" name="ktp_id" type="number" value="{{ $participant->ktp_id }}"
                                     disabled />
                             </div>
                             <div class="mb-2">
-                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-black"
                                     for="name">Nama</label>
                                 <input
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-white dark:text-black dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                                     id="name" name="name" type="text" value="{{ $participant->name }}" />
                             </div>
                             <div class="mb-2">
-                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-black"
                                     for="phone">Phone</label>
                                 <input
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-white dark:text-black dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                                     id="phone" name="phone" type="text" value="{{ $participant->phone }}" />
                             </div>
                             <div class="mb-2">
-                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-black"
                                     for="ticket_number">Tiker Number</label>
                                 <input
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-white dark:text-black dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                                     id="ticket_number" name="ticket_numnber" type="text"
                                     value="{{ $participant->ticket_number }}" disabled />
                             </div>
                             <div class="">
-                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-black"
                                     for="ktp_image">Gambar KTP</label>
                                 <input
-                                    class="mb-5 block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400"
+                                    class="mb-5 block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-white dark:text-gray-400 dark:placeholder-gray-400"
                                     id="ktp_image" name="ktp_image" type="file" accept="image/*"
                                     onchange="previewImage()">
                             </div>
@@ -58,10 +58,10 @@
                             </div>
                         </div>
                         <div class="mb-2">
-                            <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                            <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-black"
                                 for="address">Alamat</label>
                             <textarea
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-white dark:text-black dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                                 id="address" name="address" rows="4" placeholder="Masukan Alamat">{{ $participant->address }}</textarea>
                         </div>
                         <button
