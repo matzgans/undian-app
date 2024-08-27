@@ -15,7 +15,7 @@ Route::middleware(['throttle:5,1'])->get('/', function () {
 })->name("layouts.index");
 
 Route::get('/tickets', [TicketController::class, 'index'])->middleware('throttle:5,1')->name('tickets.index');
-// Route::get('/tickets/show', [TicketController::class, 'show'])->name('tickets.show');
+Route::get('/tickets/show', [TicketController::class, 'show'])->middleware('throttle:4,1')->name('tickets.show');
 
 
 
