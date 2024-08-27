@@ -57,16 +57,16 @@ class ParticipantController extends Controller
                 'address' => 'required|string|max:255',
                 'phone' => 'required|string|max:15',
                 'ktp_image' => 'required|mimes:jpg,jpeg,png|max:500',  // Maksimal 500KB, sesuaikan jika perlu
-                'g-recaptcha-response' => 'required',  // Validasi CAPTCHA
+                // 'g-recaptcha-response' => 'required',  // Validasi CAPTCHA
             ]);
 
             // Verifikasi reCAPTCHA
-            $recaptcha = new ReCaptcha(config('services.google.recaptcha.secret_key'));
-            $response = $recaptcha->verify($request->input('g-recaptcha-response'), $request->ip());
+            // $recaptcha = new ReCaptcha(config('services.google.recaptcha.secret_key'));
+            // $response = $recaptcha->verify($request->input('g-recaptcha-response'), $request->ip());
 
-            if (!$response->isSuccess()) {
-                throw new \Exception('ReCAPTCHA verification failed.');
-            }
+            // if (!$response->isSuccess()) {
+            //     throw new \Exception('ReCAPTCHA verification failed.');
+            // }
 
             // Proses upload gambar
             if ($request->hasFile('ktp_image')) {
