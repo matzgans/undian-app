@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Participant;
 use App\Models\Undian;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,9 +14,11 @@ class UndianSeeder extends Seeder
      */
     public function run(): void
     {
-        Undian::create([
-            'participant_id' => 1,
-            'prize_id' => 1,
-        ]);
+        for ($i = 1; $i < 5; $i++) {
+            Undian::create([
+                "participant_id" => fake()->randomElement(Participant::pluck("id")),
+                "prize_id" => fake()->randomElement(Participant::pluck("id")),
+            ]);
+        }
     }
 }
