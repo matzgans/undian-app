@@ -8,6 +8,7 @@ use App\Models\Undian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function Pest\Laravel\get;
 
 class UndianController extends Controller
 {
@@ -26,9 +27,16 @@ class UndianController extends Controller
             // Select random winner
             $total_winner = $request->get("total_winner");
             $prize = $request->get("prize");
+            $already_won = Undian::all("participant_id");
             $winners = Participant::inRandomOrder()
                 ->limit($total_winner)
+                ->whereNotIn("id", $already_won)
                 ->get(["ticket_number", "id"]);
+
+
+            if (count($winners) < 1) {
+                return redirect()->back()->withInput()->withErrors(['error' => "tidak ada pemenang karena semua sudah menang"]);
+            }
 
             // Insert ke table Undian
             $insertData = [];
@@ -45,10 +53,14 @@ class UndianController extends Controller
 
             // Mengambil semua peserta berdasarkan ticket_number dari pemenang yang dipilih
             $participants = Participant::whereIn("ticket_number", $winners->pluck('ticket_number'))->get();
+            $prize_name = Prize::where("id", "=", $prize)->get("name");
 
 
             DB::commit();
-            return redirect()->route('undian.index')->with('success', 'Berhasil mendapatkan pemenang')->with('participants', $participants);
+            return redirect()->route('undian.index')
+                ->with('success', 'Berhasil mendapatkan pemenang')
+                ->with('participants', $participants)
+                ->with('prize_name', $prize_name);
         } catch (\Throwable $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);

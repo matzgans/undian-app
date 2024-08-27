@@ -49,8 +49,13 @@
                 @foreach (session('participants') as $index => $participant)
                     <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg my-5">
                         <div class="px-6 pt-6 text-xl font-bold text-gray-500 pb-6">
-                            Pemenang Ke : {{ $index + 1 }}
-
+                            @if (session('prize_name'))
+                                @foreach (session('prize_name') as $index => $prize)
+                                    <p>Pemenang Ke {{ $index + 1 }}, Memenangkan :<span class="text-orange-700">
+                                            {{ $prize['name'] }} </span>
+                                    </p>
+                                @endforeach
+                            @endif
                         </div>
                         <div class="w-full">
                             <form class="mx-auto max-w-full p-5">
