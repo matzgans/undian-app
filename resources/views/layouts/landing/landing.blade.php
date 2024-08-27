@@ -29,6 +29,7 @@
         @include('layouts.landing.footer')
     </div>
     @stack('before-scripts')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     @stack('after-scripts')

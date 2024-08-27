@@ -6,12 +6,16 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+// Route::get('/', function () {
+//     return view('pages.landing.landing');
+// })->name("layouts.index");
+
+Route::middleware(['throttle:5,1'])->get('/', function () {
     return view('pages.landing.landing');
 })->name("layouts.index");
 
-Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
-Route::get('/tickets/show', [TicketController::class, 'show'])->name('tickets.show');
+Route::get('/tickets', [TicketController::class, 'index'])->middleware('throttle:5,1')->name('tickets.index');
+// Route::get('/tickets/show', [TicketController::class, 'show'])->name('tickets.show');
 
 
 
@@ -29,7 +33,9 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('/participant', ParticipantController::class)->except("store");
     Route::resource('/undian', UndianController::class)->except("create");
 });
-Route::post('/participant/store', [ParticipantController::class, 'store'])->name('participant.store');
+Route::post('/participant/store', [ParticipantController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('participant.store');
 
 
 

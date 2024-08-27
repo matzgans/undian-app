@@ -94,6 +94,8 @@
         <input
             class="mb-5 block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400"
             id="default_size" name="ktp_image" type="file" accept=".jpg, .jpeg" required onchange="validateFile()">
+
+        <div class="g-recaptcha" data-sitekey="{{ config('services.google.recaptcha.site_key') }}"></div>
         <button
             class="mb-5 block w-full cursor-pointer rounded-lg bg-green-800 p-5 text-sm text-white hover:bg-green-600 focus:outline-none dark:border-green-800 dark:bg-green-800 dark:text-white dark:placeholder-amber-400"
             type="submit">Submit</button>
