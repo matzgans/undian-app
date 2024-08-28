@@ -22,10 +22,11 @@ class ParticipantController extends Controller
 
         if ($search) {
             $participants = Participant::where('name', 'like', '%' . $search . "%")
-                ->orderBy('name', 'asc') // Tambahkan ini untuk mengurutkan berdasarkan nama
-                ->paginate(4);
+                ->orderBy('name', 'asc')
+                ->paginate(4)
+                ->appends(['search' => $search]); // Tambahkan ini untuk mempertahankan search query
         } else {
-            $participants = Participant::orderBy('name', 'asc') // Tambahkan ini untuk mengurutkan berdasarkan nama
+            $participants = Participant::orderBy('name', 'asc')
                 ->paginate(4);
         }
 
@@ -50,25 +51,14 @@ class ParticipantController extends Controller
         DB::beginTransaction();
 
         try {
-            // Validasi input termasuk reCAPTCHA
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
                 'ktp_id' => 'required|digits:16|unique:participants',  // Pastikan 'participants' adalah nama tabel yang benar
                 'address' => 'required|string|max:255',
                 'phone' => 'required|string|max:15',
                 'ktp_image' => 'required|mimes:jpg,jpeg,png|max:500',  // Maksimal 500KB, sesuaikan jika perlu
-                // 'g-recaptcha-response' => 'required',  // Validasi CAPTCHA
             ]);
 
-            // Verifikasi reCAPTCHA
-            // $recaptcha = new ReCaptcha(config('services.google.recaptcha.secret_key'));
-            // $response = $recaptcha->verify($request->input('g-recaptcha-response'), $request->ip());
-
-            // if (!$response->isSuccess()) {
-            //     throw new \Exception('ReCAPTCHA verification failed.');
-            // }
-
-            // Proses upload gambar
             if ($request->hasFile('ktp_image')) {
                 $file = $request->file('ktp_image');
                 $fileName = time() . '.' . $file->getClientOriginalExtension();  // Buat nama file unik

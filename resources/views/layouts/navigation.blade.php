@@ -18,7 +18,17 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('participant.index')" :active="request()->routeIs('participant.*')">
-                        {{ __('Participant') }}
+                        {{ __('Partisipan') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('undian.index')" :active="request()->routeIs('undian.*')">
+                        {{ __('Undian') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('prize.index')" :active="request()->routeIs('prize.*')">
+                        {{ __('Hadiah') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -86,6 +96,12 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('participant.index')" :active="request()->routeIs('participant.*')">
                 {{ __('Participant') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('undian.index')" :active="request()->routeIs('undian.*')">
+                {{ __('Undian') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('prize.index')" :active="request()->routeIs('prize.*')">
+                {{ __('Hadiah') }}
             </x-responsive-nav-link>
         </div>
 
