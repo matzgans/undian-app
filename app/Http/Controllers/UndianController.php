@@ -89,7 +89,9 @@ class UndianController extends Controller
         } else {
             $query->orderBy('participants.name', 'asc'); // Order by participant name
         }
-        $winners = $query->paginate(4);
+        $winners = $query->paginate(4)->appends(['search' => $search]);
+
+
         return view('pages.undian.winner', compact('winners'));
     }
 }
