@@ -80,7 +80,8 @@ class UndianController extends Controller
                 'participants.ktp_image',
                 'participants.ticket_number',
                 'participants.phone',
-                'prizes.name as prize_name'
+                'prizes.name as prize_name',
+                "undians.id"
             );
 
         if ($search) {
@@ -93,5 +94,22 @@ class UndianController extends Controller
 
 
         return view('pages.undian.winner', compact('winners'));
+    }
+
+    public function destroy($undian)
+    {
+
+
+        DB::beginTransaction();
+
+        try {
+            Undian::where("id", "=", $undian)->delete();
+
+            DB::commit();
+            return redirect()->back()->with('success', 'Data Pemenang Undian Berhasil Dihapus');
+        } catch (\Throwable $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }
