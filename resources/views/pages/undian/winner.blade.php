@@ -2,7 +2,7 @@
     <div class="py-5">
         <div class="mx-auto max-w-[90rem] sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="px-6 pt-6 text-xl font-bold text-gray-500 pb-6">
+                <div class="px-6 pb-6 pt-6 text-xl font-bold text-gray-500">
                     {{ __('Daftar Pemenang') }}
                 </div>
                 <div class="mt-3 flex px-6">
@@ -71,7 +71,7 @@
                                         class="border-b odd:bg-white even:bg-gray-50 dark:border-gray-700 dark:text-black odd:dark:bg-white odd:dark:text-black even:dark:bg-white">
                                         <th class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-black"
                                             scope="row">
-                                            {{ $loop->index + 1 }}
+                                            {{ ($winners->currentPage() - 1) * $winners->perPage() + $loop->iteration }}
                                         </th>
                                         <td class="px-6 py-4">
                                             {{ $winner->ktp_id }}
