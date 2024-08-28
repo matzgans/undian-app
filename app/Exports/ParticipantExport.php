@@ -34,7 +34,8 @@ class ParticipantExport implements FromCollection, WithHeadings, WithMapping, Wi
             'Alamat',
             'Nomor Tiket',
             'Nomor Telepon',
-            'Gambar KTP'
+            'Gambar KTP',
+            'Tanggal Di inputkan'
         ];
     }
 
@@ -54,6 +55,7 @@ class ParticipantExport implements FromCollection, WithHeadings, WithMapping, Wi
             $participant->ticket_number,
             $participant->phone,
             $participant->ktp_image,
+            $participant->created_at->translatedFormat('d F Y H:i'),
         ];
     }
 

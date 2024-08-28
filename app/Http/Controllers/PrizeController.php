@@ -15,13 +15,15 @@ class PrizeController extends Controller
 
         if ($search) {
             $prizes = Prize::where('name', 'like', '%' . $search . "%")
-                ->orderBy('name', 'asc') // Tambahkan ini untuk mengurutkan berdasarkan nama
-                ->paginate(4);
+                ->orderBy('name', 'asc')
+                ->paginate(4)
+                ->appends(['search' => $search]); // Tambahkan ini untuk mempertahankan search query
         } else {
-            $prizes = Prize::orderBy('name', 'asc') // Tambahkan ini untuk mengurutkan berdasarkan nama
+            $prizes = Prize::orderBy('name', 'asc')
                 ->paginate(4);
         }
-        return view("pages.prize.index", compact('prizes'));
+
+        return view('pages.prize.index', compact('prizes'));
     }
     public function create()
     {

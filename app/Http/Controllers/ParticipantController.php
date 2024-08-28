@@ -22,10 +22,11 @@ class ParticipantController extends Controller
 
         if ($search) {
             $participants = Participant::where('name', 'like', '%' . $search . "%")
-                ->orderBy('name', 'asc') // Tambahkan ini untuk mengurutkan berdasarkan nama
-                ->paginate(4);
+                ->orderBy('name', 'asc')
+                ->paginate(4)
+                ->appends(['search' => $search]); // Tambahkan ini untuk mempertahankan search query
         } else {
-            $participants = Participant::orderBy('name', 'asc') // Tambahkan ini untuk mengurutkan berdasarkan nama
+            $participants = Participant::orderBy('name', 'asc')
                 ->paginate(4);
         }
 
