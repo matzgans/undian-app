@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div id="success-animation"
-                class="fixed inset-0 flex items-center justify-center bg-amber-900 bg-opacity-100 backdrop-blur-sm pointer-events-none hidden">
+                class="fixed inset-0 flex items-center justify-center !bg-amber-900 bg-opacity-100 backdrop-blur-sm pointer-events-none hidden">
                 <h1 class="px-6 pt-6 text-xl font-bold text-gray-500 pb-6">Mencari Pemenang....</h1>
                 <dotlottie-player src="https://lottie.host/1852b8b5-1f2f-442e-a358-945d5350ca5b/laMTBR5PJr.json"
                     background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
